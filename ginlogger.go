@@ -70,7 +70,7 @@ func ErrorLoggerT(typ gin.ErrorType) gin.HandlerFunc {
 // Example:
 //        router := gin.New()
 //        router.Use(ginglogger.Logger(log))
-func Logger(log *logger.Logger) gin.HandlerFunc {
+func Logger(log *logger.Logger, prefix string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		t := time.Now()
 
@@ -88,7 +88,7 @@ func Logger(log *logger.Logger) gin.HandlerFunc {
 		switch {
 		case statusCode >= 400 && statusCode <= 499:
 			{
-				log.Warningf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+				log.Warningf("["+prefix+"] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 					statusColor, statusCode, reset,
 					latency,
 					clientIP,
@@ -99,7 +99,7 @@ func Logger(log *logger.Logger) gin.HandlerFunc {
 			}
 		case statusCode >= 500:
 			{
-				log.Errorf("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+				log.Errorf("["+prefix+"] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 					statusColor, statusCode, reset,
 					latency,
 					clientIP,
@@ -109,7 +109,7 @@ func Logger(log *logger.Logger) gin.HandlerFunc {
 				)
 			}
 		default:
-			log.Infof("[GIN] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
+			log.Infof("["+prefix+"] |%s %3d %s| %12v | %s |%s  %s %-7s %s\n%s",
 				statusColor, statusCode, reset,
 				latency,
 				clientIP,
