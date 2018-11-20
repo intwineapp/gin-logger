@@ -1,5 +1,5 @@
 // Package ginlogger provides a logging middleware to get
-// https://github.com/intwineapp/logger as logging library for
+// https://github.com/intwinelabs/logger as logging library for
 // https://github.com/gin-gonic/gin. It can be used as replacement for
 // the internal logging middleware
 // http://godoc.org/github.com/gin-gonic/gin#Logger.
@@ -10,7 +10,7 @@
 //        "flag
 //        "time"
 //        "github.com/intwineap/logger"
-//        "github.com/intwineapp/gin-logger"
+//        "github.com/intwinelabs/gin-logger"
 //        "github.com/gin-gonic/gin"
 //    )
 //    func main() {
@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/intwineapp/logger"
+	"github.com/intwinelabs/logger"
 )
 
 var (
